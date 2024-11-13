@@ -16,7 +16,7 @@ st.write('The name on your Smoothie will be:' , name_on_order)
 
 cnx = st.connection("snowflake")
 session = cnx.session()
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
+my_dataframe = session.table("smoothies.public.fruit_options")
 #st.dataframe(data=my_dataframe, use_container_width=True)
 #convert the snowpark dataframe to a pandas dataframe so we can use the LOC function
 pd_df = my_dataframe.to_pandas()
@@ -51,6 +51,7 @@ if time_to_insert:
 import requests
 if ingredients_list:
     ingredients_string=''
+    
     for fruit_chosen in ingredients_list:
         ingredients_string+=fruit_chosen+' '
 
